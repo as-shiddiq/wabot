@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { Client } = require('whatsapp-web.js');
 
-const client = new Client();
+const client = new Client({ puppeteer: { headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
 const qrCode = require('qrcode');
 
 var express = require('express');
