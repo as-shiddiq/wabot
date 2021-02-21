@@ -87,7 +87,7 @@ var server = http.createServer(function (req, res) {
 // });
 
 // client.initialize();
-server.listen(3000);
+server.listen(8080);
 
 
-console.log("server running on http://localhost:3000");
+console.log("server running on http://localhost:8080");
