@@ -79,7 +79,7 @@ client.on('message', message => {
 });
 
 client.initialize();
-server.listen(3000);
+server.listen();
 
 
 console.log("server running on http://localhost:3000");
