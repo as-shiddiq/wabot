@@ -6,15 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node index.js",
-    "start" : "node index.js"
+    "start": "node index.js"
   },
   "keywords": [
     "wabot"
   ],
+  "engines": {
+    "node": "12.11.1"
+  },
   "author": "as-shiddiq",
   "license": "ISC",
   "dependencies": {
     "@pedroslopez/moduleraid": "^4.1.0",
+    "express": "~4.9.x",
     "qrcode": "^1.4.4",
     "request": "^2.88.2",
     "sharp": "^0.27.1",

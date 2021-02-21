@@ -1,93 +1,31 @@
-const fs = require('fs');
-const { Client } = require('whatsapp-web.js');
+var express = require('express');
+var app = express();
 
-// Path where the session data will be stored
-const SESSION_FILE_PATH = './session.json';
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
 
-// Load the session data if it has been previously saved
-// let sessionData;
-// if(fs.existsSync(SESSION_FILE_PATH)) {
-//     sessionData = require(SESSION_FILE_PATH);
-//     if(JSON.stringify(sessionData)=='{}')
-//     {
-//     	sessionData = null
-//     }
-// }
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+});
+app.use(function (req, res, next) {
 
-// {session: sessionData}
-// Use the saved values
-const client = new Client();
-const qrCode = require('qrcode');
-const http = require('http');
-const request = require('request');
-// Save session values to the file upon successful auth
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://www.civimechengineering.com');
 
-var server = http.createServer(function (req, res) {
- //    client.on('qr', async (qr) => {
- //    	// Generate and scan this code with your phone
- //     	var gambar = await qrCode.toDataURL(qr);
- //     	console.log(gambar);
-	// 	var body = "<center><img src='" + gambar + "'></img><br/>Silahkan scan qrcode ini dengan Whatsapp</center>";
-	    	
-	//  	res.writeHead(200, {
-	// 	    'Content-Length': body.length,
-	// 	    'Content-Type': 'text/html',
-	// 	    'Pesan-Header': 'Pengenalan Node.js'
-	// 	});
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-	// 	res.write(body);
-	// });
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-	// client.on('ready', () => {
- //       var body = "<center><h1>Berhasil terhubung</h1></center>";
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
- //       res.writeHead(200, {
- //           'Content-Length': body.length,
- //           'Content-Type': 'text/html',
- //           'Pesan-Header': 'Pengenalan Node.js'
- //       });
-
- //       res.write(body);
- //       console.log('Client is ready!');
-	// });
-	var body = "Si anjay";
-	    	
-	 	res.writeHead(200, {
-		    'Content-Length': body.length,
-		    'Content-Type': 'text/html',
-		    'Pesan-Header': 'Pengenalan Node.js'
-		});
-
-		res.write(body);
-	// client.on('authenticated', (session) => {
-	//     console.log('AUTHENTICATED', session);
-	//     sessionCfg=session;
-	//     fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), function (err) {
-	//         if (err) {
-	//             console.error(err);
-	//         }
-	//     });
-	// });
-
-	// client.on('auth_failure', msg => {
-	//     // Fired if session restore was unsuccessfull
-	//     console.error('AUTHENTICATION FAILURE', msg);
-
-	// });var http = require('http');
- 
+    // Pass to next layer of middleware
+    next();
 });
 
-// client.on('message', message => {
-// 	if(message.body === '!ping') {
-// 		message.reply('sianjay');
-// 	}
-// 	else{
-// 		message.reply(message.body);
-// 	}
-// });
-
-// client.initialize();
-server.listen(8080);
-
-
-console.log("server running on http://localhost:8080");
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
