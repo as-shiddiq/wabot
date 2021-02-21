@@ -1,0 +1,22 @@
+{
+  "name": "wabot",
+  "version": "1.0.0",
+  "description": "coba",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node index.js"
+  },
+  "keywords": [
+    "wabot"
+  ],
+  "author": "as-shiddiq",
+  "license": "ISC",
+  "dependencies": {
+    "@pedroslopez/moduleraid": "^4.1.0",
+    "qrcode": "^1.4.4",
+    "request": "^2.88.2",
+    "sharp": "^0.27.1",
+    "whatsapp-web.js": "^1.12.4"
+  }
+}
