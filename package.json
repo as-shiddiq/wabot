@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js",
+    "server": "node index.js",
     "start": "node index.js"
   },
   "keywords": [
     "wabot"
   ],
   "engines": {
-    "node": "10.11.0"
+    "node": "12.11.1"
   },
   "author": "as-shiddiq",
   "license": "ISC",
