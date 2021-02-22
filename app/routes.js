@@ -4,4 +4,7 @@ module.exports = app => {
 	app.get('/wa/send', wa.send);
 	app.get('/wa/success', wa.success);
 	app.get('/wa/message', wa.message);
+	app.get('/wa/form', wa.form);
+
+
 }
